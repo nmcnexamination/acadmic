@@ -1,0 +1,150 @@
+<!-- Welcome Page (index.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Nightingale</title>
+  <!-- Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      /* Background image with gradient overlay */
+      background: 
+        linear-gradient(45deg, rgba(255,107,107,0.5), rgba(78,205,196,0.2)),
+        url('rena.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .welcome-container {
+      /* Changed background to a semi-transparent dark cyan */
+      background: rgba(0, 139, 139, 0.8);
+      backdrop-filter: blur(1px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      width: 400px;
+      transition: all 0.3s ease;
+    }
+    .welcome-container:hover {
+      transform: translateY(-5px);
+    }
+    h1 {
+      color: white;
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .btn-login {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 15px 40px;
+      color: white;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    .btn-login:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+    .social-login {
+      margin-top: 20px;
+    }
+    .social-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      margin: 0 5px;
+      padding: 10px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      .welcome-container {
+        width: 90%;
+        padding: 30px;
+      }
+      h1 {
+        font-size: 2.5em;
+      }
+      .btn-login {
+        font-size: 1em;
+        padding: 12px 30px;
+      }
+      .social-btn {
+        font-size: 1em;
+        padding: 8px;
+      }
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2em;
+      }
+      .btn-login {
+        font-size: 0.9em;
+        padding: 10px 25px;
+      }
+      .social-btn {
+        font-size: 0.9em;
+        padding: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <h1>Welcome</h1>
+    <button class="btn-login" onclick="window.location.href='login.html'">Get Started</button>
+    <!-- Social media buttons -->
+    <div class="social-login">
+      <!-- Telegram -->
+      <a href="https://t.me/nmcnexam" target="_blank" style="text-decoration: none;">
+        <button class="social-btn">
+          <i class="fab fa-telegram-plane"></i>
+        </button>
+      </a>
+      <!-- Email -->
+      <a href="mailto:Nightingaleacademic@gmail.com" target="_blank" style="text-decoration: none;">
+        <button class="social-btn">
+          <i class="fas fa-envelope"></i>
+        </button>
+      </a>
+      <!-- Twitter -->
+      <a href="https://x.com/Academicnight?t=qL5UOGYAlOWFZp5tkHcKAg&s=09" target="_blank" style="text-decoration: none;">
+        <button class="social-btn">
+          <i class="fab fa-twitter"></i>
+        </button>
+      </a>
+      <!-- WhatsApp -->
+      <a href="https://whatsapp.com/channel/0029VaW2i4qJuyAIGj7CRb0W" target="_blank" style="text-decoration: none;">
+        <button class="social-btn">
+          <i class="fab fa-whatsapp"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

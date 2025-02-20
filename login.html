@@ -1,0 +1,254 @@
+<!-- Login Page (login.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Nightingale</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      /* Background image with gradient overlay */
+      background: 
+        linear-gradient(45deg, rgba(255,107,107,0.7), rgba(78,205,196,0.7)),
+        url('backgroud1.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-container {
+      background: rgba(255, 255, 255, 0.0.5);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+      position: relative;
+    }
+    h2 {
+      color: white;
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: white;
+      font-size: 1em;
+      transition: all 0.3s ease;
+    }
+    input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    /* Password toggle styling */
+    .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-submit:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    .error-message {
+      color: #ff6b6b;
+      text-align: center;
+      margin-top: 15px;
+      display: none;
+    }
+    /* Spinner (loader) styles */
+    .loader {
+      display: none;
+      margin: 20px auto;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid #fff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .social-login {
+      margin-top: 20px;
+    }
+    .social-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      margin: 0 5px;
+      padding: 10px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      .login-container {
+        width: 90%;
+        padding: 30px;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      .btn-submit {
+        font-size: 1em;
+        padding: 10px;
+      }
+      .social-btn {
+        font-size: 1em;
+        padding: 8px;
+      }
+    }
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.6em;
+      }
+      .btn-submit {
+        font-size: 0.9em;
+        padding: 8px;
+      }
+      .social-btn {
+        font-size: 0.9em;
+        padding: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm" onsubmit="return handleLogin(event)">
+      <div class="form-group">
+        <input type="text" id="username" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <!-- Password input with toggle icon -->
+        <input type="password" id="password" placeholder="Password" required>
+        <span class="password-toggle" onclick="togglePassword()">
+          <i class="fas fa-eye" id="toggleIcon"></i>
+        </span>
+      </div>
+      <button type="submit" class="btn-submit">Continue</button>
+    </form>
+    <!-- Spinner (loader) element -->
+    <div class="loader" id="loader"></div>
+    <div class="error-message" id="errorMessage">Invalid credentials!</div>
+    <!-- Social media buttons -->
+    <div class="social-login">
+      <!-- Telegram -->
+      <a href="https://t.me/nmcnexam" target="_blank" style="text-decoration: none;">
+        <button class="social-btn">
+          <i class="fab fa-telegram-plane"></i>
+        </button>
+      </a>
+      <!-- Email -->
+      <a href="mailto:Nightingaleacademic@gmail.com" target="_blank" style="text-decoration: none;">
+        <button class="social-btn">
+          <i class="fas fa-envelope"></i>
+        </button>
+      </a>
+      <!-- Twitter (using the standard Twitter icon) -->
+      <a href="https://x.com/Academicnight?t=qL5UOGYAlOWFZp5tkHcKAg&s=09" target="_blank" style="text-decoration: none;">
+        <button class="social-btn">
+          <i class="fab fa-twitter"></i>
+        </button>
+      </a>
+      <!-- WhatsApp -->
+      <a href="https://whatsapp.com/channel/0029VaW2i4qJuyAIGj7CRb0W" target="_blank" style="text-decoration: none;">
+        <button class="social-btn">
+          <i class="fab fa-whatsapp"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Toggle password visibility function
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleIcon = document.getElementById('toggleIcon');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+      }
+    }
+
+    // Handle login submission and show spinner
+    function handleLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('errorMessage');
+      const form = document.getElementById('loginForm');
+      const loader = document.getElementById('loader');
+
+      // Simple validation (replace with your real authentication logic)
+      if (username.trim() !== '' && password.trim() !== '') {
+        // Hide the form and show the spinner
+        form.style.display = 'none';
+        loader.style.display = 'block';
+        // After a short delay, redirect to the embed link
+        setTimeout(() => {
+          window.location.href = 'https://shorturl.at/CNqGE';
+        }, 1500);
+      } else {
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 3000);
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>
